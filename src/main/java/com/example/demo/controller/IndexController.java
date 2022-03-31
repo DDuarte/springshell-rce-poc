@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @RequestMapping("/index")
-    public void index(EvalBean evalBean){
-        //System.out.println(evalBean);
+    public void index(EvalBean evalBean) {
+
     }
 
     @InitBinder

