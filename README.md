@@ -1,3 +1,6 @@
+CVE-2022-22965 - vulnerable app and PoC
+---------------------------------------
+
 Trial & error:
 ```sh
 docker rm -f rce; docker build -t rce:latest . && docker run -d -p 8080:8080 --name rce rce:latest && sleep 5 && python poc.py
@@ -27,8 +30,8 @@ Sources:
 
 Vulnerable app requirements[^1]:
 - JDK 9 or above
-- Standalone Tomcat (no Embedded Tomcat)
-- Any Spring version
+- Standalone Tomcat (no Embedded Tomcat) with WAR deployment
+- Any Spring version before 5.3.18 / 5.2.20 (Spring Boot before 2.5.12)
 - No blocklist on WebDataBinder / InitBinder
 - Parameter bind with POJOs directly (no @RequestBody, @RequestQuery, etc.)
 - Writeable file system (e.g webapps/ROOT)
