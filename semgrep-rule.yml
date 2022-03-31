@@ -1,0 +1,34 @@
+rules:
+- id: cve-2022-22965
+  patterns:
+    - pattern: |
+        @$MAPPING(...)
+        public $RETURNTYPE $METHOD($Y $X, ...) {
+          ...
+        }
+    - pattern-not: |
+        @$MAPPING(...)
+        public $RETURNTYPE $METHOD(@$ANNOTATION $Y $X, ...) {
+          ...
+        }
+    - pattern-not: |
+        @$MAPPING(...)
+        public $RETURNTYPE $METHOD(@$ANNOTATION(...) $Y $X, ...) {
+          ...
+        }
+    - pattern-not: |
+        @$MAPPING(...)
+        public $RETURNTYPE $METHOD(HttpServletRequest $X, ...) {
+          ...
+        }
+    - pattern-not: |
+        @$MAPPING(...)
+        public $RETURNTYPE $METHOD(HttpServletResponse $X, ...) {
+          ...
+        }
+    - metavariable-regex:
+        metavariable: $MAPPING
+        regex: .+Mapping
+  message: Semgrep found a match
+  languages: [java]
+  severity: WARNING
