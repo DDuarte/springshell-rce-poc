@@ -28,6 +28,8 @@ root
 $ semgrep --config=semgrep-rule.yml .
 ```
 
+[Semgrep rule and test cases](https://semgrep.dev/s/DDuarte:cve-2022-22965)
+
 ### Output example
 
 ```
