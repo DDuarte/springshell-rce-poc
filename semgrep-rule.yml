@@ -2,6 +2,9 @@ rules:
   - id: cve-2022-22965
     patterns:
       - pattern: "@$MAP(...) $R $M(..., $Y $X, ...) { ... }"
+      # Classes and annotations that do not have the vulnerability based on:
+      # https://docs.spring.io/spring-framework/docs/5.3.18/javadoc-api/org/springframework/beans/BeanUtils.html#isSimpleValueType-java.lang.Class-
+      # https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-arguments
       - pattern-not: "@$MAP(...) $R $M(..., @CookieValue(...) $Y $X, ...) { ... }"
       - pattern-not: "@$MAP(...) $R $M(..., @MatrixVariable(...) $Y $X, ...) { ... }"
       - pattern-not: "@$MAP(...) $R $M(..., @PathVariable(...) $Y $X, ...) { ... }"
