@@ -94,6 +94,8 @@ rules:
       - pattern-not: "@$MAP(...) $R $M(..., org.springframework.ui.Model $X, ...) { ... }"
       - pattern-not: "@$MAP(...) $R $M(..., org.springframework.ui.ModelMap $X, ...) { ... }"
       - pattern-not: "@$MAP(...) $R $M(..., org.springframework.validation.BindingResult $X, ...) { ... }"
+      - pattern-not: "@$MAP(...) $R $M(..., org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler $X, ...) { ... }"
+      - pattern-not: "@$MAP(...) $R $M(..., org.springframework.http.HttpRequest $X, ...) { ... }"
       - metavariable-pattern:
           metavariable: $MAP
           pattern-either:
