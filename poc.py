@@ -17,7 +17,7 @@ if __name__ == "__main__":
         data=payload,
         timeout=15,
         allow_redirects=False,
-        verify=False,
+        verify=False, # FIXME
     )
 
     print("deploy", go)
